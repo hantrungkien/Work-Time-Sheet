@@ -31,7 +31,7 @@ compile 'com.github.hantrungkien:Work-Time-Sheet:-SNAPSHOT'
  android:layout_height="match_parent" />
 ````
 
-See [MainActivity.java](https://github.com/hantrungkien/Work-Time-Sheet/blob/master/app/src/main/java/htkien/worktimesheet/MainActivity.java) to know how to add events into calendar-day-view
+See [MainActivity.java](https://github.com/hantrungkien/Work-Time-Sheet/blob/master/app/src/main/java/htkien/worktimesheet/MainActivity.java) to know how to use
 
 ````Java
  @Override

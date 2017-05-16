@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">timetable</string>
+    <string name="date_time_table">%1$s - %2$s</string>
+
+</resources>

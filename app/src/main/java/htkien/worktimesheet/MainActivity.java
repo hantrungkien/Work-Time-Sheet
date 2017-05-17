@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import htkien.timetable.WorkTimeSheet;
 import htkien.timetable.listener.OnWeekCalendarChangeListener;
+import htkien.timetable.util.TimeUtils;
 
 public class MainActivity extends AppCompatActivity implements OnWeekCalendarChangeListener.OnWeekCalendarSelected {
 
@@ -21,10 +24,12 @@ public class MainActivity extends AppCompatActivity implements OnWeekCalendarCha
         ButterKnife.bind(this);
 
         mWorkTimeSheet.setOnWeekCalendarSelected(new OnWeekCalendarChangeListener(this));
+
         mWorkTimeSheet.setTextColorDate(ContextCompat.getColor(this, android.R.color.holo_red_dark));
         mWorkTimeSheet.setColorViewFirst(ContextCompat.getColor(this, android.R.color.black));
         mWorkTimeSheet.setColorViewSecond(ContextCompat.getColor(this, android.R.color.holo_red_dark));
         mWorkTimeSheet.setColorViewThird(ContextCompat.getColor(this, android.R.color.holo_green_dark));
+        mWorkTimeSheet.setCurrentItemDatePager(TimeUtils.getPositionForWeek(Calendar.getInstance()));
 
     }
 

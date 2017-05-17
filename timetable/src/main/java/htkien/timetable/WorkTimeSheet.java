@@ -210,7 +210,6 @@ public class WorkTimeSheet extends LinearLayout {
     private void initWeekCalendarViewPager() {
         mWeekCalendarPagerAdapter = new WeekCalendarPagerAdapter(getContext(), TimeUtils.getWeekOfTime());
         mWeekCalendarPager.setAdapter(mWeekCalendarPagerAdapter);
-        mWeekCalendarPager.setCurrentItem(TimeUtils.getPositionForWeek(Calendar.getInstance()));
     }
 
     public void setCurrentItemDatePager(int position) {

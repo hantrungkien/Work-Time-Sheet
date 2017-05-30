@@ -1,5 +1,7 @@
 package htkien.timetable.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,6 +65,29 @@ public class TimeUtils {
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         return getFormattedDate(calendar.getTimeInMillis());
+    }
+
+    public static float calculatorHour(String fromHour, String toHour) {
+        Calendar calFrom = getCalendarFromStringDate(fromHour, "dd.MM.yyyy HH:mm");
+        Calendar calTo = getCalendarFromStringDate(toHour, "dd.MM.yyyy HH:mm");
+        long time = calTo.getTimeInMillis() - calFrom.getTimeInMillis();
+        return (float) time / 3600000;
+    }
+
+    public static Calendar getCalendarFromStringDate(String date, String pattern) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(parseStringToDate(date, pattern));
+        return cal;
+    }
+
+    public static Date parseStringToDate(String date, String pattern) {
+        DateFormat df = new SimpleDateFormat(pattern);
+        try {
+            return df.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return new Date();
     }
 
 }

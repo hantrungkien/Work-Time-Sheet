@@ -30,6 +30,7 @@ import htkien.timetable.view.RoundedCornerView;
 
 public class WorkTimeSheet extends LinearLayout {
     private static final int TIME_DELAY = 200;
+    public static final double HEIGHT_HOUR_TIME_TABLE = 0.25;
 
     private NestedScrollView mScrollTimeTable;
     private ViewPager mWeekCalendarPager;
@@ -111,26 +112,26 @@ public class WorkTimeSheet extends LinearLayout {
 
     public WorkTimeSheet(Context context) {
         super(context);
-        initViews(null);
+        initViews(context);
     }
 
     public WorkTimeSheet(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        initViews(attrs);
+        initViews(context);
     }
 
     public WorkTimeSheet(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initViews(attrs);
+        initViews(context);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public WorkTimeSheet(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initViews(attrs);
+        initViews(context);
     }
 
-    private void initViews(AttributeSet attrs) {
+    private void initViews(Context context) {
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_work_time_sheet, this, true);
 
         findViewById(view);
@@ -171,6 +172,48 @@ public class WorkTimeSheet extends LinearLayout {
                 mScrollTimeTable.smoothScrollBy(0, -100);
             }
         });
+    }
+
+    public void refreshLayout() {
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, 0);
+        layoutParams.setMargins(0, 0, 0, 0);
+
+        mFirstViewMonday.setLayoutParams(layoutParams);
+        mSecondViewMonday.setLayoutParams(layoutParams);
+        mThirdViewMonday.setLayoutParams(layoutParams);
+        mFourViewMonday.setLayoutParams(layoutParams);
+
+        mFirstViewTuesday.setLayoutParams(layoutParams);
+        mSecondViewTuesday.setLayoutParams(layoutParams);
+        mThirdViewTuesday.setLayoutParams(layoutParams);
+        mFourViewTuesday.setLayoutParams(layoutParams);
+
+        mFirstViewWednesday.setLayoutParams(layoutParams);
+        mSecondViewWednesday.setLayoutParams(layoutParams);
+        mThirdViewWednesday.setLayoutParams(layoutParams);
+        mFourViewWednesday.setLayoutParams(layoutParams);
+
+        mFirstViewThurday.setLayoutParams(layoutParams);
+        mSecondViewThurday.setLayoutParams(layoutParams);
+        mThirdViewThurday.setLayoutParams(layoutParams);
+        mFourViewThurday.setLayoutParams(layoutParams);
+
+        mFirstViewFriday.setLayoutParams(layoutParams);
+        mSecondViewFriday.setLayoutParams(layoutParams);
+        mThirdViewFriday.setLayoutParams(layoutParams);
+        mFourViewFriday.setLayoutParams(layoutParams);
+
+        mFirstViewSaturday.setLayoutParams(layoutParams);
+        mSecondViewSaturday.setLayoutParams(layoutParams);
+        mThirdViewSaturday.setLayoutParams(layoutParams);
+        mFourViewSaturday.setLayoutParams(layoutParams);
+
+        mFirstViewSunday.setLayoutParams(layoutParams);
+        mSecondViewSunday.setLayoutParams(layoutParams);
+        mThirdViewSunday.setLayoutParams(layoutParams);
+        mFourViewSunday.setLayoutParams(layoutParams);
+
+        invalidate();
     }
 
     private void findViewById(View view) {
@@ -312,7 +355,11 @@ public class WorkTimeSheet extends LinearLayout {
         mFourViewSunday.setBackgroundColor(color);
     }
 
-    public void setFirstContentViewOfMonday(final int hight, final int marginTop) {
+    public void setFirstContentViewOfMonday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFirstViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -322,7 +369,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setSecondContentViewOfMonday(final int hight, final int marginTop) {
+    public void setSecondContentViewOfMonday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mSecondViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -332,7 +383,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setThirdContentViewOfMonday(final int hight, final int marginTop) {
+    public void setThirdContentViewOfMonday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mThirdViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -342,7 +397,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFourContentViewOfMonday(final int hight, final int marginTop) {
+    public void setFourContentViewOfMonday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFourViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -352,7 +411,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFirstContentViewOfTuesday(final int hight, final int marginTop) {
+    public void setFirstContentViewOfTuesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFirstViewTuesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -362,7 +425,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setSecondContentViewOfTuesday(final int hight, final int marginTop) {
+    public void setSecondContentViewOfTuesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mSecondViewTuesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -372,7 +439,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setThirdContentViewOfTuesday(final int hight, final int marginTop) {
+    public void setThirdContentViewOfTuesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mThirdViewTuesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -382,7 +453,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFourContentViewOfTuesday(final int hight, final int marginTop) {
+    public void setFourContentViewOfTuesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFourViewTuesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -392,7 +467,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFirstContentViewOfWednesday(final int hight, final int marginTop) {
+    public void setFirstContentViewOfWednesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFirstViewWednesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -402,7 +481,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setSecondContentViewOfWednesday(final int hight, final int marginTop) {
+    public void setSecondContentViewOfWednesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mSecondViewWednesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -412,7 +495,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setThirdContentViewOfWednesday(final int hight, final int marginTop) {
+    public void setThirdContentViewOfWednesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mThirdViewWednesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -422,7 +509,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFourContentViewOfWednesday(final int hight, final int marginTop) {
+    public void setFourContentViewOfWednesday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFourViewWednesday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -432,7 +523,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFirstContentViewOfThurday(final int hight, final int marginTop) {
+    public void setFirstContentViewOfThurday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFirstViewThurday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -442,7 +537,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setSecondContentViewOfThurday(final int hight, final int marginTop) {
+    public void setSecondContentViewOfThurday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mSecondViewThurday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -452,7 +551,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setThirdContentViewOfThurday(final int hight, final int marginTop) {
+    public void setThirdContentViewOfThurday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mThirdViewThurday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -462,7 +565,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFourContentViewOfThurday(final int hight, final int marginTop) {
+    public void setFourContentViewOfThurday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFourViewThurday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -472,7 +579,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFirstContentViewOfFriday(final int hight, final int marginTop) {
+    public void setFirstContentViewOfFriday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFirstViewFriday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -482,7 +593,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setSecondContentViewOfFriday(final int hight, final int marginTop) {
+    public void setSecondContentViewOfFriday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mSecondViewFriday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -492,7 +607,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setThirdContentViewOfFriday(final int hight, final int marginTop) {
+    public void setThirdContentViewOfFriday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mThirdViewFriday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -502,7 +621,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFourContentViewOfFriday(final int hight, final int marginTop) {
+    public void setFourContentViewOfFriday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFourViewFriday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -512,7 +635,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFirstContentViewOfSaturday(final int hight, final int marginTop) {
+    public void setFirstContentViewOfSaturday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFirstViewSaturday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -522,7 +649,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setSecondContentViewOfSaturday(final int hight, final int marginTop) {
+    public void setSecondContentViewOfSaturday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mSecondViewSaturday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -532,7 +663,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setThirdContentViewOfSaturday(final int hight, final int marginTop) {
+    public void setThirdContentViewOfSaturday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mThirdViewSaturday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -542,7 +677,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFourContentViewOfSaturday(final int hight, final int marginTop) {
+    public void setFourContentViewOfSaturday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFourViewSaturday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -552,7 +691,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFirstContentViewOfSunday(final int hight, final int marginTop) {
+    public void setFirstContentViewOfSunday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFirstViewSunday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -562,7 +705,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setSecondContentViewOfSunday(final int hight, final int marginTop) {
+    public void setSecondContentViewOfSunday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mSecondViewSunday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -572,7 +719,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setThirdContentViewOfSunday(final int hight, final int marginTop) {
+    public void setThirdContentViewOfSunday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mThirdViewSunday.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -582,7 +733,11 @@ public class WorkTimeSheet extends LinearLayout {
         }, TIME_DELAY);
     }
 
-    public void setFourContentViewOfSunday(final int hight, final int marginTop) {
+    public void setFourContentViewOfSunday(String date, String from, String to) {
+        float timeHight = TimeUtils.calculatorHour(from, to);
+        float timeMargin = TimeUtils.calculatorHour(date.concat(" 00:00"), from);
+        final int hight = (int) (timeHight / HEIGHT_HOUR_TIME_TABLE) + 1;
+        final int marginTop = (int) (timeMargin / HEIGHT_HOUR_TIME_TABLE);
         mFourViewSunday.postDelayed(new Runnable() {
             @Override
             public void run() {

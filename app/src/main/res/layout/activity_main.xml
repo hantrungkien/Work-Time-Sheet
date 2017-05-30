@@ -8,6 +8,15 @@
     <htkien.timetable.WorkTimeSheet
         android:id="@+id/work_time_sheet"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="0.9" />
+
+    <Button
+        android:id="@+id/button_test"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:text="TEST" />
 
 </LinearLayout>

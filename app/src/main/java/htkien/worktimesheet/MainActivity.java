@@ -44,10 +44,15 @@ public class MainActivity extends AppCompatActivity implements OnWeekCalendarCha
 
     }
 
+    @OnClick(R.id.button_test)
+    void test() {
+        mWorkTimeSheet.refreshLayout();
+    }
+
     @Override
     public void onWeekCalendarSelected(int position) {
         Log.e(TAG, "onWeekCalendarSelected: " + position);
-        mWorkTimeSheet.setFirstContentViewOfMonday(10, 10);
+        mWorkTimeSheet.setFirstContentViewOfMonday("29.05.2017", "29.05.2017 20:30", "29.05.2017 23:00");
 
     }
 }

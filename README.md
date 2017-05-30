@@ -19,7 +19,7 @@ allprojects {
 ````
 module/build.gradle
 ````gradle
-compile 'com.github.hantrungkien:Work-Time-Sheet:1.0.0'
+compile 'com.github.hantrungkien:Work-Time-Sheet:1.0.1'
 ````
 
 #### How to use:

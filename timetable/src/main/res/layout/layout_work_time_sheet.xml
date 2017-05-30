@@ -887,6 +887,12 @@
                     android:layout_height="wrap_content"
                     app:corner_radius="15.0" />
 
+                <htkien.timetable.view.RoundedCornerView
+                    android:id="@+id/view_four_monday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:corner_radius="15.0" />
+
             </FrameLayout>
 
             <View
@@ -915,6 +921,12 @@
 
                 <htkien.timetable.view.RoundedCornerView
                     android:id="@+id/view_third_tuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:corner_radius="15.0" />
+
+                <htkien.timetable.view.RoundedCornerView
+                    android:id="@+id/view_four_tuesday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:corner_radius="15.0" />
@@ -952,6 +964,12 @@
                     android:layout_height="wrap_content"
                     app:corner_radius="15.0" />
 
+                <htkien.timetable.view.RoundedCornerView
+                    android:id="@+id/view_four_wednesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:corner_radius="15.0" />
+
 
             </FrameLayout>
 
@@ -985,6 +1003,12 @@
                     android:layout_height="wrap_content"
                     app:corner_radius="15.0" />
 
+                <htkien.timetable.view.RoundedCornerView
+                    android:id="@+id/view_four_thursday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:corner_radius="15.0" />
+
             </FrameLayout>
 
             <View
@@ -1013,6 +1037,12 @@
 
                 <htkien.timetable.view.RoundedCornerView
                     android:id="@+id/view_third_friday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:corner_radius="15.0" />
+
+                <htkien.timetable.view.RoundedCornerView
+                    android:id="@+id/view_four_friday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:corner_radius="15.0" />
@@ -1050,6 +1080,12 @@
                     android:layout_height="wrap_content"
                     app:corner_radius="15.0" />
 
+                <htkien.timetable.view.RoundedCornerView
+                    android:id="@+id/view_four_saturday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:corner_radius="15.0" />
+
             </FrameLayout>
 
             <View
@@ -1078,6 +1114,12 @@
 
                 <htkien.timetable.view.RoundedCornerView
                     android:id="@+id/view_third_sunday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:corner_radius="15.0" />
+
+                <htkien.timetable.view.RoundedCornerView
+                    android:id="@+id/view_four_sunday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:corner_radius="15.0" />

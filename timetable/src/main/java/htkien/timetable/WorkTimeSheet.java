@@ -29,7 +29,6 @@ import htkien.timetable.view.RoundedCornerView;
  */
 
 public class WorkTimeSheet extends LinearLayout {
-
     private static final int TIME_DELAY = 200;
 
     private NestedScrollView mScrollTimeTable;
@@ -46,51 +45,59 @@ public class WorkTimeSheet extends LinearLayout {
     /**
      * Monday
      */
-    private RoundedCornerView mViewFirstMonday;
-    private RoundedCornerView mViewSecondMonday;
-    private RoundedCornerView mViewThirdMonday;
+    private RoundedCornerView mFirstViewMonday;
+    private RoundedCornerView mSecondViewMonday;
+    private RoundedCornerView mThirdViewMonday;
+    private RoundedCornerView mFourViewMonday;
 
     /**
      * Tuesday
      */
-    private RoundedCornerView mViewFirstTuesday;
-    private RoundedCornerView mViewSecondTuesday;
-    private RoundedCornerView mViewThirdTuesday;
+    private RoundedCornerView mFirstViewTuesday;
+    private RoundedCornerView mSecondViewTuesday;
+    private RoundedCornerView mThirdViewTuesday;
+    private RoundedCornerView mFourViewTuesday;
 
     /**
      * Wednessday
      */
-    private RoundedCornerView mViewFirstWednesday;
-    private RoundedCornerView mViewSecondWednesday;
-    private RoundedCornerView mViewThirdWednesday;
+    private RoundedCornerView mFirstViewWednesday;
+    private RoundedCornerView mSecondViewWednesday;
+    private RoundedCornerView mThirdViewWednesday;
+    private RoundedCornerView mFourViewWednesday;
 
     /**
      * Thursday
      */
-    private RoundedCornerView mViewFirstThurday;
-    private RoundedCornerView mViewSecondThurday;
-    private RoundedCornerView mViewThirdThurday;
+    private RoundedCornerView mFirstViewThurday;
+    private RoundedCornerView mSecondViewThurday;
+    private RoundedCornerView mThirdViewThurday;
+    private RoundedCornerView mFourViewThurday;
 
     /**
      * Friday
      */
-    private RoundedCornerView mViewFirstFriday;
-    private RoundedCornerView mViewSecondFriday;
-    private RoundedCornerView mViewThirdFriday;
+    private RoundedCornerView mFirstViewFriday;
+    private RoundedCornerView mSecondViewFriday;
+    private RoundedCornerView mThirdViewFriday;
+    private RoundedCornerView mFourViewFriday;
 
     /**
      * Saturday
      */
-    private RoundedCornerView mViewFirstSaturday;
-    private RoundedCornerView mViewSecondSaturday;
-    private RoundedCornerView mViewThirdSaturday;
+    private RoundedCornerView mFirstViewSaturday;
+    private RoundedCornerView mSecondViewSaturday;
+    private RoundedCornerView mThirdViewSaturday;
+    private RoundedCornerView mFourViewSaturday;
 
     /**
      * Sunday
      */
-    private RoundedCornerView mViewFirstSunday;
-    private RoundedCornerView mViewSecondSunday;
-    private RoundedCornerView mViewThirdSunday;
+    private RoundedCornerView mFirstViewSunday;
+    private RoundedCornerView mSecondViewSunday;
+    private RoundedCornerView mThirdViewSunday;
+    private RoundedCornerView mFourViewSunday;
+
 
     /**
      * Note
@@ -124,57 +131,16 @@ public class WorkTimeSheet extends LinearLayout {
     }
 
     private void initViews(AttributeSet attrs) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_work_time_sheet, this, true);
+        final View view = LayoutInflater.from(getContext()).inflate(R.layout.layout_work_time_sheet, this, true);
 
-        mScrollTimeTable = ButterKnife.findById(view, R.id.scroll_time_table);
-        mWeekCalendarPager = ButterKnife.findById(view, R.id.view_pager_date);
-        mBtnPreviousDate = ButterKnife.findById(view, R.id.button_previous_date);
-        mBtnNextDate = ButterKnife.findById(view, R.id.button_next_date);
-        mBtnUpHour = ButterKnife.findById(view, R.id.button_up_hour);
-        mBtnDownHour = ButterKnife.findById(view, R.id.button_down_hour);
-        mTextViewNoteFirst = ButterKnife.findById(view, R.id.textview_note_first);
-        mTextViewNoteSecond = ButterKnife.findById(view, R.id.textview_note_second);
-        mTextViewNoteThird = ButterKnife.findById(view, R.id.textview_note_third);
+        findViewById(view);
 
-        mViewNoteFirst = ButterKnife.findById(view, R.id.view_note_first);
-        mViewNoteSecond = ButterKnife.findById(view, R.id.view_note_second);
-        mViewNoteThird = ButterKnife.findById(view, R.id.view_note_third);
-
-        mTxtItemHour = ButterKnife.findById(view, R.id.textview_hour);
         mTxtItemHour.post(new Runnable() {
             @Override
             public void run() {
                 itemHourHeight = mTxtItemHour.getHeight();
             }
         });
-
-        mViewFirstMonday = ButterKnife.findById(view, R.id.view_first_monday);
-        mViewSecondMonday = ButterKnife.findById(view, R.id.view_second_monday);
-        mViewThirdMonday = ButterKnife.findById(view, R.id.view_third_monday);
-
-        mViewFirstTuesday = ButterKnife.findById(view, R.id.view_first_tuesday);
-        mViewSecondTuesday = ButterKnife.findById(view, R.id.view_second_tuesday);
-        mViewThirdTuesday = ButterKnife.findById(view, R.id.view_third_tuesday);
-
-        mViewFirstWednesday = ButterKnife.findById(view, R.id.view_first_wednesday);
-        mViewSecondWednesday = ButterKnife.findById(view, R.id.view_second_wednesday);
-        mViewThirdWednesday = ButterKnife.findById(view, R.id.view_third_wednesday);
-
-        mViewFirstThurday = ButterKnife.findById(view, R.id.view_first_thursday);
-        mViewSecondThurday = ButterKnife.findById(view, R.id.view_second_thursday);
-        mViewThirdThurday = ButterKnife.findById(view, R.id.view_third_thursday);
-
-        mViewFirstFriday = ButterKnife.findById(view, R.id.view_first_friday);
-        mViewSecondFriday = ButterKnife.findById(view, R.id.view_second_friday);
-        mViewThirdFriday = ButterKnife.findById(view, R.id.view_third_friday);
-
-        mViewFirstSaturday = ButterKnife.findById(view, R.id.view_first_saturday);
-        mViewSecondSaturday = ButterKnife.findById(view, R.id.view_second_saturday);
-        mViewThirdSaturday = ButterKnife.findById(view, R.id.view_third_saturday);
-
-        mViewFirstSunday = ButterKnife.findById(view, R.id.view_first_sunday);
-        mViewSecondSunday = ButterKnife.findById(view, R.id.view_second_sunday);
-        mViewThirdSunday = ButterKnife.findById(view, R.id.view_third_sunday);
 
         initWeekCalendarViewPager();
 
@@ -207,61 +173,98 @@ public class WorkTimeSheet extends LinearLayout {
         });
     }
 
+    private void findViewById(View view) {
+        mScrollTimeTable = ButterKnife.findById(view, R.id.scroll_time_table);
+        mWeekCalendarPager = ButterKnife.findById(view, R.id.view_pager_date);
+        mBtnPreviousDate = ButterKnife.findById(view, R.id.button_previous_date);
+        mBtnNextDate = ButterKnife.findById(view, R.id.button_next_date);
+        mBtnUpHour = ButterKnife.findById(view, R.id.button_up_hour);
+        mBtnDownHour = ButterKnife.findById(view, R.id.button_down_hour);
+        mTextViewNoteFirst = ButterKnife.findById(view, R.id.textview_note_first);
+        mTextViewNoteSecond = ButterKnife.findById(view, R.id.textview_note_second);
+        mTextViewNoteThird = ButterKnife.findById(view, R.id.textview_note_third);
+
+        mTxtItemHour = ButterKnife.findById(view, R.id.textview_hour);
+
+        mFirstViewMonday = ButterKnife.findById(view, R.id.view_first_monday);
+        mSecondViewMonday = ButterKnife.findById(view, R.id.view_second_monday);
+        mThirdViewMonday = ButterKnife.findById(view, R.id.view_third_monday);
+        mFourViewMonday = ButterKnife.findById(view, R.id.view_four_monday);
+
+        mFirstViewTuesday = ButterKnife.findById(view, R.id.view_first_tuesday);
+        mSecondViewTuesday = ButterKnife.findById(view, R.id.view_second_tuesday);
+        mThirdViewTuesday = ButterKnife.findById(view, R.id.view_third_tuesday);
+        mFourViewTuesday = ButterKnife.findById(view, R.id.view_four_tuesday);
+
+        mFirstViewWednesday = ButterKnife.findById(view, R.id.view_first_wednesday);
+        mSecondViewWednesday = ButterKnife.findById(view, R.id.view_second_wednesday);
+        mThirdViewWednesday = ButterKnife.findById(view, R.id.view_third_wednesday);
+        mFourViewWednesday = ButterKnife.findById(view, R.id.view_four_wednesday);
+
+        mFirstViewThurday = ButterKnife.findById(view, R.id.view_first_thursday);
+        mSecondViewThurday = ButterKnife.findById(view, R.id.view_second_thursday);
+        mThirdViewThurday = ButterKnife.findById(view, R.id.view_third_thursday);
+        mFourViewThurday = ButterKnife.findById(view, R.id.view_four_thursday);
+
+        mFirstViewFriday = ButterKnife.findById(view, R.id.view_first_friday);
+        mSecondViewFriday = ButterKnife.findById(view, R.id.view_second_friday);
+        mThirdViewFriday = ButterKnife.findById(view, R.id.view_third_friday);
+        mFourViewFriday = ButterKnife.findById(view, R.id.view_four_friday);
+
+        mFirstViewSaturday = ButterKnife.findById(view, R.id.view_first_saturday);
+        mSecondViewSaturday = ButterKnife.findById(view, R.id.view_second_saturday);
+        mThirdViewSaturday = ButterKnife.findById(view, R.id.view_third_saturday);
+        mFourViewSaturday = ButterKnife.findById(view, R.id.view_four_saturday);
+
+        mFirstViewSunday = ButterKnife.findById(view, R.id.view_first_sunday);
+        mSecondViewSunday = ButterKnife.findById(view, R.id.view_second_sunday);
+        mThirdViewSunday = ButterKnife.findById(view, R.id.view_third_sunday);
+        mFourViewSunday = ButterKnife.findById(view, R.id.view_four_sunday);
+
+        mViewNoteFirst = ButterKnife.findById(view, R.id.view_note_first);
+        mViewNoteSecond = ButterKnife.findById(view, R.id.view_note_second);
+        mViewNoteThird = ButterKnife.findById(view, R.id.view_note_third);
+    }
+
     private void initWeekCalendarViewPager() {
         mWeekCalendarPagerAdapter = new WeekCalendarPagerAdapter(getContext(), TimeUtils.getWeekOfTime());
         mWeekCalendarPager.setAdapter(mWeekCalendarPagerAdapter);
     }
 
-    public void setCurrentItemDatePager(int position) {
-        mWeekCalendarPager.setCurrentItem(position);
+    public void setCurrentItemDatePager(final int position) {
+        mWeekCalendarPager.setCurrentItem(position, true);
     }
 
-    public void setTextNoteFirst(String text) {
+    public void notifyDataSetChangedWeekPager() {
+        mWeekCalendarPager.setAdapter(null);
+        mWeekCalendarPager.setAdapter(mWeekCalendarPagerAdapter);
+    }
+
+    public void setFirstNoteText(String text) {
         mTextViewNoteFirst.setText(text);
     }
 
-    public void setTextNoteSecond(String text) {
+    public void setFirstNoteColor(int color) {
+        mViewNoteFirst.setBackgroundColor(color);
+    }
+
+    public void setSecondNoteText(String text) {
         mTextViewNoteSecond.setText(text);
     }
 
-    public void setTextNoteThird(String text) {
+    public void setSecondNoteColor(int color) {
+        mViewNoteSecond.setBackgroundColor(color);
+    }
+
+    public void setThirdNoteText(String text) {
         mTextViewNoteThird.setText(text);
     }
 
-    public void setColorViewFirst(int color) {
-        mViewNoteFirst.setBackgroundColor(color);
-        mViewFirstMonday.setBackgroundColor(color);
-        mViewFirstTuesday.setBackgroundColor(color);
-        mViewFirstWednesday.setBackgroundColor(color);
-        mViewFirstThurday.setBackgroundColor(color);
-        mViewFirstFriday.setBackgroundColor(color);
-        mViewFirstSaturday.setBackgroundColor(color);
-        mViewFirstSunday.setBackgroundColor(color);
-    }
-
-    public void setColorViewSecond(int color) {
-        mViewNoteSecond.setBackgroundColor(color);
-        mViewSecondMonday.setBackgroundColor(color);
-        mViewSecondTuesday.setBackgroundColor(color);
-        mViewSecondWednesday.setBackgroundColor(color);
-        mViewSecondThurday.setBackgroundColor(color);
-        mViewSecondFriday.setBackgroundColor(color);
-        mViewSecondSaturday.setBackgroundColor(color);
-        mViewSecondSunday.setBackgroundColor(color);
-    }
-
-    public void setColorViewThird(int color) {
+    public void setThirdNoteColor(int color) {
         mViewNoteThird.setBackgroundColor(color);
-        mViewThirdMonday.setBackgroundColor(color);
-        mViewThirdTuesday.setBackgroundColor(color);
-        mViewThirdWednesday.setBackgroundColor(color);
-        mViewThirdThurday.setBackgroundColor(color);
-        mViewThirdFriday.setBackgroundColor(color);
-        mViewThirdSaturday.setBackgroundColor(color);
-        mViewThirdSunday.setBackgroundColor(color);
     }
 
-    public void setTextColorDate(int color) {
+    public void setTextDateColor(int color) {
         mWeekCalendarPagerAdapter.setTextColor(color);
     }
 
@@ -269,121 +272,322 @@ public class WorkTimeSheet extends LinearLayout {
         mWeekCalendarPager.addOnPageChangeListener(mOnWeekCalendarChangeListener);
     }
 
-    public void setContentMonday(final int startFirst, final int endFirst, final int startSecond, final int endSecond
-            , final int startThird, final int endThird) {
-        mViewFirstMonday.postDelayed(new Runnable() {
+    public void setFirstViewColor(int color) {
+        mFirstViewMonday.setBackgroundColor(color);
+        mFirstViewTuesday.setBackgroundColor(color);
+        mFirstViewWednesday.setBackgroundColor(color);
+        mFirstViewThurday.setBackgroundColor(color);
+        mFirstViewFriday.setBackgroundColor(color);
+        mFirstViewSaturday.setBackgroundColor(color);
+        mFirstViewSunday.setBackgroundColor(color);
+    }
+
+    public void setSecondViewColor(int color) {
+        mSecondViewMonday.setBackgroundColor(color);
+        mSecondViewTuesday.setBackgroundColor(color);
+        mSecondViewWednesday.setBackgroundColor(color);
+        mSecondViewThurday.setBackgroundColor(color);
+        mSecondViewFriday.setBackgroundColor(color);
+        mSecondViewSaturday.setBackgroundColor(color);
+        mSecondViewSunday.setBackgroundColor(color);
+    }
+
+    public void setThirdViewColor(int color) {
+        mThirdViewMonday.setBackgroundColor(color);
+        mThirdViewTuesday.setBackgroundColor(color);
+        mThirdViewWednesday.setBackgroundColor(color);
+        mThirdViewThurday.setBackgroundColor(color);
+        mThirdViewFriday.setBackgroundColor(color);
+        mThirdViewSaturday.setBackgroundColor(color);
+        mThirdViewSunday.setBackgroundColor(color);
+    }
+
+    public void setFourViewColor(int color) {
+        mFourViewMonday.setBackgroundColor(color);
+        mFourViewTuesday.setBackgroundColor(color);
+        mFourViewWednesday.setBackgroundColor(color);
+        mFourViewThurday.setBackgroundColor(color);
+        mFourViewFriday.setBackgroundColor(color);
+        mFourViewSaturday.setBackgroundColor(color);
+        mFourViewSunday.setBackgroundColor(color);
+    }
+
+    public void setFirstContentViewOfMonday(final int hight, final int marginTop) {
+        mFirstViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewFirstMonday.setLayoutParams(initLayoutParam(itemHourHeight * (endFirst - startFirst)
-                        , itemHourHeight * startFirst));
-
-                mViewSecondMonday.setLayoutParams(initLayoutParam(itemHourHeight * (endSecond - startSecond)
-                        , itemHourHeight * startSecond));
-
-                mViewThirdMonday.setLayoutParams(initLayoutParam(itemHourHeight * (endThird - startThird)
-                        , itemHourHeight * startThird));
+                mFirstViewMonday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
             }
         }, TIME_DELAY);
     }
 
-    public void setContentTuesday(final int startFirst, final int endFirst, final int startSecond, final int endSecond
-            , final int startThird, final int endThird) {
-        mViewFirstTuesday.postDelayed(new Runnable() {
+    public void setSecondContentViewOfMonday(final int hight, final int marginTop) {
+        mSecondViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewFirstTuesday.setLayoutParams(initLayoutParam(itemHourHeight * (endFirst - startFirst)
-                        , itemHourHeight * startFirst));
-
-                mViewSecondTuesday.setLayoutParams(initLayoutParam(itemHourHeight * (endSecond - startSecond)
-                        , itemHourHeight * startSecond));
-
-                mViewThirdTuesday.setLayoutParams(initLayoutParam(itemHourHeight * (endThird - startThird)
-                        , itemHourHeight * startThird));
+                mSecondViewMonday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
             }
         }, TIME_DELAY);
     }
 
-    public void setContentWednesday(final int startFirst, final int endFirst, final int startSecond, final int endSecond
-            , final int startThird, final int endThird) {
-        mViewFirstWednesday.postDelayed(new Runnable() {
+    public void setThirdContentViewOfMonday(final int hight, final int marginTop) {
+        mThirdViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewFirstWednesday.setLayoutParams(initLayoutParam(itemHourHeight * (endFirst - startFirst)
-                        , itemHourHeight * startFirst));
-
-                mViewSecondWednesday.setLayoutParams(initLayoutParam(itemHourHeight * (endSecond - startSecond)
-                        , itemHourHeight * startSecond));
-
-                mViewThirdWednesday.setLayoutParams(initLayoutParam(itemHourHeight * (endThird - startThird)
-                        , itemHourHeight * startThird));
+                mThirdViewMonday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
             }
         }, TIME_DELAY);
     }
 
-    public void setContentThurday(final int startFirst, final int endFirst, final int startSecond, final int endSecond
-            , final int startThird, final int endThird) {
-        mViewFirstThurday.postDelayed(new Runnable() {
+    public void setFourContentViewOfMonday(final int hight, final int marginTop) {
+        mFourViewMonday.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewFirstThurday.setLayoutParams(initLayoutParam(itemHourHeight * (endFirst - startFirst)
-                        , itemHourHeight * startFirst));
-
-                mViewSecondThurday.setLayoutParams(initLayoutParam(itemHourHeight * (endSecond - startSecond)
-                        , itemHourHeight * startSecond));
-
-                mViewThirdThurday.setLayoutParams(initLayoutParam(itemHourHeight * (endThird - startThird)
-                        , itemHourHeight * startThird));
+                mFourViewMonday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
             }
         }, TIME_DELAY);
     }
 
-    public void setContentFriday(final int startFirst, final int endFirst, final int startSecond, final int endSecond
-            , final int startThird, final int endThird) {
-        mViewFirstFriday.postDelayed(new Runnable() {
+    public void setFirstContentViewOfTuesday(final int hight, final int marginTop) {
+        mFirstViewTuesday.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewFirstFriday.setLayoutParams(initLayoutParam(itemHourHeight * (endFirst - startFirst)
-                        , itemHourHeight * startFirst));
-
-                mViewSecondFriday.setLayoutParams(initLayoutParam(itemHourHeight * (endSecond - startSecond)
-                        , itemHourHeight * startSecond));
-
-                mViewThirdFriday.setLayoutParams(initLayoutParam(itemHourHeight * (endThird - startThird)
-                        , itemHourHeight * startThird));
+                mFirstViewTuesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
             }
         }, TIME_DELAY);
     }
 
-    public void setContentSaturday(final int startFirst, final int endFirst, final int startSecond, final int endSecond
-            , final int startThird, final int endThird) {
-        mViewFirstSaturday.postDelayed(new Runnable() {
+    public void setSecondContentViewOfTuesday(final int hight, final int marginTop) {
+        mSecondViewTuesday.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewFirstSaturday.setLayoutParams(initLayoutParam(itemHourHeight * (endFirst - startFirst)
-                        , itemHourHeight * startFirst));
-
-                mViewSecondSaturday.setLayoutParams(initLayoutParam(itemHourHeight * (endSecond - startSecond)
-                        , itemHourHeight * startSecond));
-
-                mViewThirdSaturday.setLayoutParams(initLayoutParam(itemHourHeight * (endThird - startThird)
-                        , itemHourHeight * startThird));
+                mSecondViewTuesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
             }
         }, TIME_DELAY);
     }
 
-    public void setContentSunday(final int startFirst, final int endFirst, final int startSecond, final int endSecond
-            , final int startThird, final int endThird) {
-        mViewFirstSunday.postDelayed(new Runnable() {
+    public void setThirdContentViewOfTuesday(final int hight, final int marginTop) {
+        mThirdViewTuesday.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mViewFirstSunday.setLayoutParams(initLayoutParam(itemHourHeight * (endFirst - startFirst)
-                        , itemHourHeight * startFirst));
+                mThirdViewTuesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
 
-                mViewSecondSunday.setLayoutParams(initLayoutParam(itemHourHeight * (endSecond - startSecond)
-                        , itemHourHeight * startSecond));
+    public void setFourContentViewOfTuesday(final int hight, final int marginTop) {
+        mFourViewTuesday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFourViewTuesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
 
-                mViewThirdSunday.setLayoutParams(initLayoutParam(itemHourHeight * (endThird - startThird)
-                        , itemHourHeight * startThird));
+    public void setFirstContentViewOfWednesday(final int hight, final int marginTop) {
+        mFirstViewWednesday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFirstViewWednesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setSecondContentViewOfWednesday(final int hight, final int marginTop) {
+        mSecondViewWednesday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSecondViewWednesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setThirdContentViewOfWednesday(final int hight, final int marginTop) {
+        mThirdViewWednesday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mThirdViewWednesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFourContentViewOfWednesday(final int hight, final int marginTop) {
+        mFourViewWednesday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFourViewWednesday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFirstContentViewOfThurday(final int hight, final int marginTop) {
+        mFirstViewThurday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFirstViewThurday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setSecondContentViewOfThurday(final int hight, final int marginTop) {
+        mSecondViewThurday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSecondViewThurday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setThirdContentViewOfThurday(final int hight, final int marginTop) {
+        mThirdViewThurday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mThirdViewThurday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFourContentViewOfThurday(final int hight, final int marginTop) {
+        mFourViewThurday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFourViewThurday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFirstContentViewOfFriday(final int hight, final int marginTop) {
+        mFirstViewFriday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFirstViewFriday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setSecondContentViewOfFriday(final int hight, final int marginTop) {
+        mSecondViewFriday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSecondViewFriday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setThirdContentViewOfFriday(final int hight, final int marginTop) {
+        mThirdViewFriday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mThirdViewFriday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFourContentViewOfFriday(final int hight, final int marginTop) {
+        mFourViewFriday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFourViewFriday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFirstContentViewOfSaturday(final int hight, final int marginTop) {
+        mFirstViewSaturday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFirstViewSaturday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setSecondContentViewOfSaturday(final int hight, final int marginTop) {
+        mSecondViewSaturday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSecondViewSaturday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setThirdContentViewOfSaturday(final int hight, final int marginTop) {
+        mThirdViewSaturday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mThirdViewSaturday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFourContentViewOfSaturday(final int hight, final int marginTop) {
+        mFourViewSaturday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFourViewSaturday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFirstContentViewOfSunday(final int hight, final int marginTop) {
+        mFirstViewSunday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFirstViewSunday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setSecondContentViewOfSunday(final int hight, final int marginTop) {
+        mSecondViewSunday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSecondViewSunday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setThirdContentViewOfSunday(final int hight, final int marginTop) {
+        mThirdViewSunday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mThirdViewSunday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
+            }
+        }, TIME_DELAY);
+    }
+
+    public void setFourContentViewOfSunday(final int hight, final int marginTop) {
+        mFourViewSunday.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mFourViewSunday.setLayoutParams(initLayoutParam(itemHourHeight * hight
+                        , itemHourHeight * marginTop));
             }
         }, TIME_DELAY);
     }
@@ -393,6 +597,5 @@ public class WorkTimeSheet extends LinearLayout {
         layoutParams.setMargins(0, marginTop, 0, 0);
         return layoutParams;
     }
-
 
 }

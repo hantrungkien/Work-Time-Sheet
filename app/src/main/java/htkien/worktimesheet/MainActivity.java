@@ -11,10 +11,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import htkien.timetable.WorkTimeSheet;
+import htkien.timetable.listener.OnClickWarningBtnListener;
 import htkien.timetable.listener.OnWeekCalendarChangeListener;
 import htkien.timetable.util.TimeUtils;
 
-public class MainActivity extends AppCompatActivity implements OnWeekCalendarChangeListener.OnWeekCalendarSelected {
+public class MainActivity extends AppCompatActivity implements
+        OnWeekCalendarChangeListener.OnWeekCalendarSelected
+        , OnClickWarningBtnListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnWeekCalendarCha
         ButterKnife.bind(this);
 
         mWorkTimeSheet.setOnWeekCalendarSelected(new OnWeekCalendarChangeListener(this));
+        mWorkTimeSheet.setOnClickWarningBtn(this);
 
         mWorkTimeSheet.setTextDateColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
 
@@ -54,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements OnWeekCalendarCha
         Log.e(TAG, "onWeekCalendarSelected: " + position);
         mWorkTimeSheet.setFirstContentViewOfMonday("29.05.2017", "29.05.2017 20:30", "29.05.2017 23:00");
 
+    }
+
+    @Override
+    public void onClickWarningBtn() {
+        Log.e(TAG, "onClickWarningBtn: ");
     }
 }
 

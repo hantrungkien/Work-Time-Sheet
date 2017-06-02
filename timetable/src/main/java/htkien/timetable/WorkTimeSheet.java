@@ -15,10 +15,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Calendar;
-
 import butterknife.ButterKnife;
 import htkien.timetable.adapter.WeekCalendarPagerAdapter;
+import htkien.timetable.listener.OnClickWarningBtnListener;
 import htkien.timetable.listener.OnWeekCalendarChangeListener;
 import htkien.timetable.util.TimeUtils;
 import htkien.timetable.view.RoundedCornerView;
@@ -42,6 +41,7 @@ public class WorkTimeSheet extends LinearLayout {
     private TextView mTextViewNoteFirst;
     private TextView mTextViewNoteSecond;
     private TextView mTextViewNoteThird;
+    private ImageButton mButtonWarning;
 
     /**
      * Monday
@@ -108,6 +108,7 @@ public class WorkTimeSheet extends LinearLayout {
     private RoundedCornerView mViewNoteThird;
 
     private WeekCalendarPagerAdapter mWeekCalendarPagerAdapter;
+    private OnClickWarningBtnListener listener;
     private int itemHourHeight;
 
     public WorkTimeSheet(Context context) {
@@ -144,6 +145,14 @@ public class WorkTimeSheet extends LinearLayout {
         });
 
         initWeekCalendarViewPager();
+
+        mButtonWarning.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onClickWarningBtn();
+            }
+        });
 
         mBtnPreviousDate.setOnClickListener(new OnClickListener() {
             @Override
@@ -226,6 +235,7 @@ public class WorkTimeSheet extends LinearLayout {
         mTextViewNoteFirst = ButterKnife.findById(view, R.id.textview_note_first);
         mTextViewNoteSecond = ButterKnife.findById(view, R.id.textview_note_second);
         mTextViewNoteThird = ButterKnife.findById(view, R.id.textview_note_third);
+        mButtonWarning = ButterKnife.findById(view, R.id.button_warning);
 
         mTxtItemHour = ButterKnife.findById(view, R.id.textview_hour);
 
@@ -272,6 +282,10 @@ public class WorkTimeSheet extends LinearLayout {
     private void initWeekCalendarViewPager() {
         mWeekCalendarPagerAdapter = new WeekCalendarPagerAdapter(getContext(), TimeUtils.getWeekOfTime());
         mWeekCalendarPager.setAdapter(mWeekCalendarPagerAdapter);
+    }
+
+    public void setOnClickWarningBtn(OnClickWarningBtnListener listener) {
+        this.listener = listener;
     }
 
     public void setCurrentItemDatePager(final int position) {

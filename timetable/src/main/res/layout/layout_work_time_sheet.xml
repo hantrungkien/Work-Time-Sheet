@@ -1282,6 +1282,15 @@
             android:text="View 3"
             android:textColor="@android:color/black" />
 
+        <ImageButton
+            android:id="@+id/button_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/textview_note_third"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_warning" />
+
     </RelativeLayout>
 
 </LinearLayout>

@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements
         mWorkTimeSheet.setThirdViewColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
         mWorkTimeSheet.setThirdNoteColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
 
+        mWorkTimeSheet.setFourViewColor(ContextCompat.getColor(this, android.R.color.holo_green_dark));
+
+
         mWorkTimeSheet.setCurrentItemDatePager(TimeUtils.getPositionForWeek(Calendar.getInstance()));
 
     }
@@ -56,8 +59,8 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onWeekCalendarSelected(int position) {
         Log.e(TAG, "onWeekCalendarSelected: " + position);
-        mWorkTimeSheet.setFirstContentViewOfMonday("29.05.2017", "29.05.2017 20:30", "29.05.2017 23:00");
-
+        //mWorkTimeSheet.setFirstContentViewOfMonday("29.05.2017", "29.05.2017 20:30", "29.05.2017 23:00");
+        mWorkTimeSheet.setFullFourContentView(Calendar.TUESDAY);
     }
 
     @Override
